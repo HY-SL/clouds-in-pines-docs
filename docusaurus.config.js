@@ -1,43 +1,31 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Clouds in Pines',
-  tagline: '松间云 - 轻量优雅的技术文档站点',
+  title: 'Clouds in Pines', // 你的网站标题
+  tagline: '松间云 - 轻量优雅的技术文档站点', // 副标题
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  // 关键：替换为你的 Netlify 主域名
+  url: 'https://cloudsinpines.netlify.app',
+  // Netlify 根域名部署，baseUrl 必须是 "/"
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  // 替换为你的 GitHub 信息（非必须，但建议修正）
+  organizationName: 'HY-SL', // 你的 GitHub 用户名
+  projectName: 'clouds-in-pines-docs', // 你的 GitHub 仓库名
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // 改为简体中文（适配中文文档）
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -47,10 +35,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // 移除默认的编辑链接（避免指向 Facebook 仓库）
+          editUrl: undefined,
         },
         blog: {
           showReadingTime: true,
@@ -58,11 +44,7 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
+          editUrl: undefined, // 移除默认编辑链接
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -77,15 +59,15 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
+      // 自定义社交卡片（可选，后续可替换为自己的图片）
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'My Site',
+        title: 'Clouds in Pines', // 导航栏标题改为你的站点名
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Clouds in Pines Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -93,11 +75,12 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: '文档中心', // 中文标签更友好
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog', label: '技术博客', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            // 替换为你的 GitHub 仓库链接
+            href: 'https://github.com/HY-SL/clouds-in-pines-docs',
             label: 'GitHub',
             position: 'right',
           },
@@ -107,46 +90,30 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '文档',
             items: [
               {
-                label: 'Tutorial',
+                label: '快速开始',
                 to: '/docs/intro',
               },
             ],
           },
           {
-            title: 'Community',
+            title: '更多',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
+                label: '技术博客',
                 to: '/blog',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/HY-SL/clouds-in-pines-docs',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        // 版权信息改为你的站点名
+        copyright: `Copyright © ${new Date().getFullYear()} Clouds in Pines (松间云). Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
