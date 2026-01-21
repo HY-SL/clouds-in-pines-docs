@@ -1,19 +1,19 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+stm32:
+  label: STM32
+  permalink: /stm32
+  description: STM32 系列微控制器相关文章
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+embedded:
+  label: 嵌入式
+  permalink: /embedded
+  description: 嵌入式系统开发相关内容
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+arm:
+  label: ARM Cortex-M3
+  permalink: /arm
+  description: ARM Cortex-M3 架构相关技术
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+mcu:
+  label: MCU
+  permalink: /mcu
+  description: 微控制器应用开发

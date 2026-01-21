@@ -3,7 +3,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Clouds in Pines', // 你的网站标题
+  title: 'Clouds in Pines', // 网站标题
   tagline: '松间云 - 轻量优雅的技术文档站点', // 副标题
   favicon: 'img/favicon.ico',
 
@@ -11,21 +11,20 @@ const config = {
     v4: true,
   },
 
-  // 关键：替换为你的 Netlify 主域名
+  // Netlify 主域名
   url: 'https://cloudsinpines.netlify.app',
   // Netlify 根域名部署，baseUrl 必须是 "/"
   baseUrl: '/',
 
-  // 替换为你的 GitHub 信息（非必须，但建议修正）
-  organizationName: 'HY-SL', // 你的 GitHub 用户名
-  projectName: 'clouds-in-pines-docs', // 你的 GitHub 仓库名
+  organizationName: 'HY-SL', // GitHub 用户名
+  projectName: 'clouds-in-pines-docs', // GitHub 仓库名
 
   onBrokenLinks: 'throw',
 
   // 改为简体中文（适配中文文档）
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    locales: ['zh-Hans', 'en'],
   },
 
   presets: [
@@ -73,9 +72,9 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
-            label: '文档中心', // 中文标签更友好
+            label: '文档中心',
           },
           {to: '/blog', label: '技术博客', position: 'left'},
           {
@@ -112,7 +111,6 @@ const config = {
             ],
           },
         ],
-        // 版权信息改为你的站点名
         copyright: `Copyright © ${new Date().getFullYear()} Clouds in Pines (松间云). Built with Docusaurus.`,
       },
       prism: {
