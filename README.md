@@ -39,3 +39,13 @@ GIT_USER=<Your GitHub username> yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## push to github
+
+\# 进入项目目录    cd E:\CloudsinPines\clouds-in-pines-docs 
+
+\# 暂存修改            git add docusaurus.config.js 
+
+\# 提交修改            git commit -m "fix: 适配Netlify部署的配置修改" 
+
+\# 推送到GitHub   git push origin master
