@@ -4,7 +4,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Clouds in Pines', // 网站标题
-  tagline: '松间云 - 轻量优雅的技术文档站点', // 副标题
+  tagline: '松间云 - 轻量技术文档站点', // 副标题
   favicon: 'img/favicon.ico',
 
   future: {
@@ -21,7 +21,6 @@ const config = {
 
   onBrokenLinks: 'throw',
 
-  // 改为简体中文（适配中文文档）
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans', 'en'],
@@ -34,7 +33,6 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // 移除默认的编辑链接（避免指向 Facebook 仓库）
           editUrl: undefined,
         },
         blog: {
