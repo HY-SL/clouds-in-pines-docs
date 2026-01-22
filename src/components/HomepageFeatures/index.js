@@ -4,32 +4,29 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: '嵌入式开发',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        深入探索嵌入式系统开发，从基础的电路设计与硬件原理，到 STM32、ESP32 等微控制器的驱动开发。记录软硬件协同设计、电机驱动控制等实践经验，构建扎实的嵌入式技术基础。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '人工智能与视觉',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        聚焦深度学习与计算机视觉领域，从 YOLO 系列目标检测模型的部署与应用，到图像处理算法的实践。分享环境搭建、模型训练、推理优化的完整学习路径与踩坑经验。
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '机器人与控制',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        探索 ROS2 机器人操作系统与自动控制原理，从基础的运动学建模到复杂的路径规划与控制算法。记录机器人系统开发的全过程，将理论知识转化为实际工程能力。
       </>
     ),
   },

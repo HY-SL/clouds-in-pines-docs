@@ -17,3 +17,18 @@ mcu:
   label: MCU
   permalink: /mcu
   description: 微控制器应用开发
+
+yolo:
+  label: YOLO
+  permalink: /yolo
+  description: 目标检测
+
+deployment:
+  label: 部署
+  permalink: /deployment
+  description: 软件部署
+
+conda:
+  label: Conda
+  permalink: /conda
+  description: Conda 环境管理

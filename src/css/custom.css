@@ -4,11 +4,180 @@
  * work well for content-centric websites.
  */
 
+/* ===================== 全局基础样式 ===================== */
+/* 强制设置html和body的背景色为纯白色，覆盖Infima框架默认背景 */
 html, body {
-  background-color: #ffffff;
+  background-color: #ffffff; /* 十六进制白色值，保证页面基础背景统一 */
 }
 
-/* You can override the default Infima variables here. */
+/* ===================== Infima主题变量重写（亮色模式） ===================== */
+/* :root选择器匹配文档根元素（<html>），定义全局CSS变量，优先级高于框架默认变量 */
+:root {
+  /* 主色调基础值（蓝色），应用于按钮、链接、导航高亮等核心组件 */
+  --ifm-color-primary: #3c688e;
+  /* 主色调加深一级，用于hover/active等交互状态 */
+  --ifm-color-primary-dark: #2d5270;
+  /* 主色调加深二级，用于强交互/选中状态 */
+  --ifm-color-primary-darker: #1e3c52;
+  /* 主色调加深三级，用于禁用/不可点击状态 */
+  --ifm-color-primary-darkest: #0f2634;
+  /* 主色调减淡一级，用于次要按钮/弱强调 */
+  --ifm-color-primary-light: #5a7ea8;
+  /* 主色调减淡二级，用于边框/分割线等装饰元素 */
+  --ifm-color-primary-lighter: #7894c2;
+  /* 主色调减淡三级，用于背景/辅助元素 */
+  --ifm-color-primary-lightest: #96aadc;
+  /* 代码字体大小：相对于默认字体的95%，略小提升可读性 */
+  --ifm-code-font-size: 95%;
+  /* 代码块中高亮行的背景色：黑色半透明（透明度0.1），浅灰色调不刺眼 */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* ===================== Infima主题变量重写（暗色模式） ===================== */
+/* [data-theme='dark']：匹配暗色模式下的根元素，单独定义暗色模式变量 */
+[data-theme='dark'] {
+  /* 暗色模式主色调（更浅的蓝色），提升暗色背景下的可读性 */
+  --ifm-color-primary: #6a8bb5;
+  /* 暗色模式主色调加深一级 */
+  --ifm-color-primary-dark: #5a7ba5;
+  /* 暗色模式主色调加深二级 */
+  --ifm-color-primary-darker: #4a6c95;
+  /* 暗色模式主色调加深三级 */
+  --ifm-color-primary-darkest: #3a5d85;
+  /* 暗色模式主色调减淡一级 */
+  --ifm-color-primary-light: #8a9bc5;
+  /* 暗色模式主色调减淡二级 */
+  --ifm-color-primary-lighter: #aabdd5;
+  /* 暗色模式主色调减淡三级 */
+  --ifm-color-primary-lightest: #cadfe5;
+  /* 暗色模式代码高亮行背景：更深的黑色半透明（透明度0.3），适配暗色背景 */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ===================== 导航栏样式（毛玻璃效果） ===================== */
+/* .navbar：匹配Docusaurus默认导航栏容器 */
+.navbar {
+  backdrop-filter: blur(10px); /* 核心：给导航栏添加10px的毛玻璃模糊效果 */
+  -webkit-backdrop-filter: blur(10px); /* 兼容Safari浏览器，实现毛玻璃效果 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* 导航栏底部浅白色边框，增加层次感 */
+  background-color: rgba(255, 255, 255, 0.7) !important; /* 亮色模式：70%透明白色背景，配合毛玻璃 */
+  /* !important：强制覆盖Infima框架默认的导航栏背景色，确保自定义样式生效 */
+}
+/* 暗色模式下的导航栏样式 */
+[data-theme='dark'] .navbar {
+  background-color: rgba(24, 25, 26, 0.7) !important; /* 暗色模式：70%透明深灰背景，适配暗色主题 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 暗色模式：更浅的边框（透明度0.1），保证可见性 */
+}
+
+/* ===================== 首页Hero区域标题样式 ===================== */
+/* .hero__title：匹配Docusaurus首页Hero区域的主标题 */
+.hero__title {
+  font-size: 5rem !important; /* 主标题字号：5rem（超大号），rem适配不同屏幕字体大小 */
+  font-weight: 800 !important; /* 字体粗细：800（超粗体），突出主标题 */
+  line-height: 1.2 !important; /* 行高：1.2，减少行间距，让标题更紧凑 */
+}
+/* .hero__subtitle：匹配Hero区域的副标题 */
+.hero__subtitle {
+  font-size: 2.5rem !important; /* 副标题字号：2.5rem，比主标题小但仍突出 */
+  font-weight: 400 !important; /* 字体粗细：400（常规），和主标题形成对比 */
+  margin-top: 1rem !important; /* 上边距：1rem，和主标题保持间距，提升排版美观度 */
+}
+
+/* ===================== 博客页面标题样式统一 ===================== */
+/* 合并所有博客相关标题选择器，统一样式，减少重复代码：
+   .blog-post-title：博客文章详情页标题
+   .blog-post-title a：标题链接（如果标题是链接形式）
+   .blog h2/h3：博客页面内的二级/三级标题
+   .blog h2 a/h3 a：二级/三级标题的链接
+   .blog-post-item-title：博客列表页的文章标题
+   .blog-post-item-title a：列表页标题链接
+   .blog * h1/h2/h3：博客页面内所有子元素的一级/二级/三级标题
+   .blog * h1 a/h2 a/h3 a：上述标题的链接形式
+*/
+.blog-post-title,
+.blog-post-title a,
+.blog h2,
+.blog h2 a,
+.blog h3,
+.blog h3 a,
+.blog-post-item-title,
+.blog-post-item-title a,
+.blog * h1,
+.blog * h1 a,
+.blog * h2,
+.blog * h2 a,
+.blog * h3,
+.blog * h3 a {
+  font-size: 1.8rem !important; /* 博客标题统一字号：1.8rem，保证视觉一致性 */
+  font-weight: 600 !important; /* 字体粗细：600（半粗体），突出标题但不夸张 */
+}
+/* 单独定义博客文章内的一级标题（正文主标题），比其他标题更大 */
+article h1 {
+  font-size: 2.5rem !important; /* 文章内h1字号：2.5rem，突出文章核心标题 */
+  font-weight: 600 !important; /* 字体粗细：600，保持和其他标题一致的视觉风格 */
+}
+
+/* ===================== 响应式适配（移动端/平板） ===================== */
+/* @media媒体查询：匹配屏幕宽度≤996px的设备（平板/手机） */
+@media screen and (max-width: 996px) {
+  /* Hero区域标题适配移动端 */
+  .hero__title {
+    font-size: 3rem !important; /* 移动端主标题字号：3rem，缩小避免溢出 */
+  }
+  .hero__subtitle {
+    font-size: 1.8rem !important; /* 移动端副标题字号：1.8rem，适配小屏幕 */
+  }
+
+  /* 博客标题适配移动端 */
+  .blog-post-title,
+  .blog-post-title a,
+  .blog h2,
+  .blog h2 a,
+  .blog h3,
+  .blog h3 a,
+  .blog-post-item-title,
+  .blog-post-item-title a,
+  .blog * h1,
+  .blog * h1 a,
+  .blog * h2,
+  .blog * h2 a,
+  .blog * h3,
+  .blog * h3 a {
+    font-size: 1.5rem !important; /* 移动端博客标题字号：1.5rem，适配小屏幕 */
+  }
+  /* 移动端博客文章内h1标题适配 */
+  article h1 {
+    font-size: 1.8rem !important; /* 移动端文章h1字号：1.8rem，缩小但仍突出 */
+  }
+}
+
+
+/*紫色配色
+:root {
+  --ifm-color-primary: #8585c7;
+  --ifm-color-primary-dark: #6d6ba8;
+  --ifm-color-primary-darker: #5d5e9e;
+  --ifm-color-primary-darkest: #4d4d8c;
+  --ifm-color-primary-light: #a3a8e8;
+  --ifm-color-primary-lighter: #c4c8f3;
+  --ifm-color-primary-lightest: #e1e3fa;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #9e9ee8;
+  --ifm-color-primary-dark: #8a8cd9;
+  --ifm-color-primary-darker: #7b7bca;
+  --ifm-color-primary-darkest: #6c6abb;
+  --ifm-color-primary-light: #b8b8f2;
+  --ifm-color-primary-lighter: #d2d2fc;
+  --ifm-color-primary-lightest: #ebebf9;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+*/
+
+/*绿色配色
 :root {
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
@@ -20,8 +189,6 @@ html, body {
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -32,15 +199,4 @@ html, body {
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
-
-.navbar {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-[data-theme='dark'] .navbar {
-  background-color: rgba(24, 25, 26, 0.7) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
+*/
