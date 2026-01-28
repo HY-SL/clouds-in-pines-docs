@@ -3,37 +3,70 @@
  * and scoped locally.
  */
 
+/* .bgFixed removed as it is no longer used */
+
 .heroBanner {
+  height: 100vh; /* Full screen height */
+  width: 100%;
   padding: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-image: url('/img/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -4rem;
+  
+  /* Hero Image Background */
+  background-image: url('/img/background.png');
+  background-size: 100% 100%; /* Stretch to fill */
+  background-position: center;
+  background-attachment: scroll; /* Remove parallax to keep size consistent */
+  background-repeat: no-repeat;
+  color: #ffffff; /* Text color white for contrast */
+  
+  /* Pull up to cover navbar area for transparent effect */
+  margin-top: -60px; /* Fallback */
+  margin-top: calc(-1 * var(--ifm-navbar-height));
+  padding-top: var(--ifm-navbar-height); /* Ensure content is centered relative to viewport */
+}
+
+/* Overlay removed to show raw image */
+/* .heroBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); 
+  z-index: 0;
+} */
+
+/* Ensure content is above the overlay */
+.heroBanner > div {
+  position: relative;
+  z-index: 1;
 }
 
 .hero__title {
   font-size: 4rem !important;
   font-weight: 800 !important;
   line-height: 1.2 !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Text shadow for better readability */
 }
 
 .hero__subtitle {
   font-size: 2rem !important;
   font-weight: 400 !important;
   margin-top: 1rem !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
+
+/* .hero__title and .hero__subtitle are now defined above with text-shadow */
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 4rem 2rem;
   }
   
   .hero__title {

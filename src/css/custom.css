@@ -5,9 +5,16 @@
  */
 
 /* ===================== 全局基础样式 ===================== */
-/* 强制设置html和body的背景色为纯白色，覆盖Infima框架默认背景 */
+/* 强制设置html和body的背景色为纯白色 */
 html, body {
-  background-color: #ffffff; /* 十六进制白色值，保证页面基础背景统一 */
+  background-color: #ffffff;
+  background-image: none; /* 移除之前的渐变 */
+  min-height: 100vh;
+}
+
+[data-theme='dark'] html, [data-theme='dark'] body {
+  background-color: #1b1b1d; /* 暗色模式深灰背景 */
+  background-image: none;
 }
 
 /* ===================== Infima主题变量重写（亮色模式） ===================== */
@@ -31,6 +38,276 @@ html, body {
   --ifm-code-font-size: 95%;
   /* 代码块中高亮行的背景色：黑色半透明（透明度0.1），浅灰色调不刺眼 */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* ... existing styles ... */
+
+/* ===================== Modern Docs & Blog Styling ===================== */
+
+/* --- 1. Sidebar Styling --- */
+/* Modern Sidebar Menu Items */
+.menu__link {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin: 2px 0;
+}
+
+.menu__link:hover {
+  background: rgba(var(--ifm-color-primary-rgb), 0.1);
+  transform: translateX(4px); /* Subtle slide right */
+}
+
+.menu__link--active {
+  background: linear-gradient(90deg, rgba(var(--ifm-color-primary-rgb), 0.15), transparent);
+  border-left: 3px solid var(--ifm-color-primary);
+  border-radius: 4px 8px 8px 4px; /* distinct shape */
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+}
+
+/* --- 2. Blog List Styling (Cards) --- */
+/* Transform blog list items into cards */
+.blog-list-page article[itemprop='blogPost'] {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme='dark'] .blog-list-page article[itemprop='blogPost'] {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.blog-list-page article[itemprop='blogPost']:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .blog-list-page article[itemprop='blogPost']:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 3. Content Typography & Elements --- */
+/* Gradient Headings */
+.markdown h1, article header h1 {
+  background: linear-gradient(90deg, var(--ifm-color-primary), #6bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Modern Blockquotes */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: rgba(var(--ifm-color-primary-rgb), 0.05);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  color: var(--ifm-font-color-base);
+}
+
+/* Admonitions (Note/Tip/Warning etc) - Glassy look */
+.alert {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  backdrop-filter: blur(5px);
+}
+
+/* --- 4. Page Entry Animation --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* --- 5. Pagination & Breadcrumbs --- */
+.pagination-nav__link {
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.pagination-nav__link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  background: rgba(var(--ifm-color-primary-rgb), 0.05);
+  border-color: var(--ifm-color-primary);
+}
+
+.breadcrumbs {
+  margin-bottom: 1.5rem;
+}
+.breadcrumbs__item {
+  background: rgba(0,0,0,0.03);
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-right: 6px;
+  transition: background 0.2s;
+}
+.breadcrumbs__item:hover {
+  background: rgba(0,0,0,0.06);
+}
+.breadcrumbs__link {
+  font-weight: 500;
+}
+
+/* --- 6. Generic Card Styling (Doc Category Pages) --- */
+.card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+  border-color: transparent !important;
+}
+
+[data-theme='dark'] .card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Previous color palettes ... */
+
+/* ===================== Liquid Glass Effects ===================== */
+
+/* Liquid Glass Button */
+.liquid-glass-btn {
+  position: relative;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  text-decoration: none !important;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+[data-theme='dark'] .liquid-glass-btn {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liquid-glass-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(var(--ifm-color-primary-rgb), 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme='dark'] .liquid-glass-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* "Liquid" sheen effect */
+.liquid-glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.liquid-glass-btn:hover::before {
+  left: 100%;
+}
+
+/* Glass Card - Updated for white background */
+.glass-card {
+  background: #ffffff; /* 白底 */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* 极淡的边框 */
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* 柔和阴影 */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  padding: 20px;
+}
+
+[data-theme='dark'] .glass-card {
+  background: rgba(255, 255, 255, 0.05); /* 暗色模式保持轻微透明 */
+  backdrop-filter: blur(12px); /* 暗色模式下保留毛玻璃 */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1); /* 悬停阴影加深 */
+  /* border-color: rgba(var(--ifm-color-primary-rgb), 0.2); 移除悬停边框变色 */
+  border-color: rgba(0, 0, 0, 0.05); /* 保持和默认边框颜色一致 */
+}
+
+[data-theme='dark'] .glass-card:hover {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.1); /* 保持暗色模式默认边框颜色 */
+}
+
+/* Glass Footer - Overridden to solid color #303846 */
+.footer {
+  background-color: #303846 !important; /* Solid background color as requested */
+  color: #ffffff; /* Ensure text is white */
+  backdrop-filter: none; /* Remove blur effect */
+  -webkit-backdrop-filter: none;
+  border-top: none; /* Remove border if not needed */
+}
+
+.footer__title,
+.footer__link-item {
+  color: #ffffff !important; /* Force links and titles to be white */
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary) !important; /* Keep hover effect */
+  text-decoration: none;
+}
+
+[data-theme='dark'] .footer {
+  background-color: #303846 !important; /* Keep consistent in dark mode */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* ===================== Infima主题变量重写（暗色模式） ===================== */
